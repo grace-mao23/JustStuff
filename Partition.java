@@ -21,6 +21,7 @@ public class Partition {
     // variables
     pivot = 0;
     start += 1;
+    System.out.println("O: " + Arrays.toString(data));
     while (start != end) {
       if (data[start] > data[pivot]) {
         // switch start and end
@@ -33,8 +34,19 @@ public class Partition {
       }
       System.out.println(Arrays.toString(data));
     }
-    System.out.println(Arrays.toString(data) + "\n"+start);
-    return -1;
+    if (data[start] <= data[pivot]) {
+      int t = data[start];
+      data[start] = data[pivot];
+      data[pivot] = t;
+      pivot = start;
+    } else {
+      int t = data[start-1];
+      data[start-1] = data[pivot];
+      data[pivot] = t;
+      pivot = start-1;
+    }
+    System.out.println(Arrays.toString(data));
+    return pivot;
   }
 
   public static void main(String[] args) {
