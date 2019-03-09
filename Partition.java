@@ -14,7 +14,6 @@ public class Partition {
   public static int partition (int [] data, int start, int end) {
     // generate random pivot index
     int pivot = (int)(Math.random() * data.length);
-    System.out.println(pivot);
     // bring pivot element to index 0
     int temp = data[start];
     data[start] = data[pivot];
@@ -22,18 +21,26 @@ public class Partition {
     // variables
     pivot = 0;
     start += 1;
-  //  while (start != end) {
-    //  if (data[start] > data[pivot])
-    //}
-    System.out.println(Arrays.toString(data));
-    System.out.println(start+","+end);
+    while (start != end) {
+      if (data[start] > data[pivot]) {
+        // switch start and end
+        int t = data[end];
+        data[end] = data[start];
+        data[start] = t;
+        end -= 1;
+      } else {
+        start += 1;
+      }
+      System.out.println(Arrays.toString(data));
+    }
+    System.out.println(Arrays.toString(data) + "\n"+start);
     return -1;
   }
 
   public static void main(String[] args) {
   //  Partition p = new Partition();
     int[] test = new int[] { 1, 4, 2, 9, 3, 5 };
-    System.out.println(Partition.partition(test,0,test.length));
+    System.out.println(Partition.partition(test,0,test.length-1));
   }
 
 }
