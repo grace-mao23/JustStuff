@@ -13,7 +13,7 @@ public class Partition {
 
   public static int partition (int [] data, int start, int end) {
     // generate random pivot index
-    int pivot = (int)(Math.random() * data.length);
+    int pivot = (int)(Math.random() * (end - start + 1)) + start;
     // bring pivot element to index 0
     int temp = data[start];
     data[start] = data[pivot];
